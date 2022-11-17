@@ -5,7 +5,14 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    print(simulate("all work and no paly make jack a dull boy",10000,"avg",10))
+    string="all work and no paly make jack a dull boy"
+    Number_of_times=1000
+    mode="everything"
+    threads_n=10
+    Continue_m=None
+    wanted_n=None
+    bigger_m=None
+    print(simulate(string,Number_of_times,mode,threads=threads_n,Continue=Continue_m,wanted=wanted_n,bigger=bigger_m))
 
 
 class Computer(threading.Thread):
@@ -55,6 +62,9 @@ def guesser(st):
     return tries
 def plot():
     return
+
+
+
 def display():
     return
 
@@ -68,16 +78,17 @@ def simulate(st,times,Output,threads=None,Continue=None,wanted=None,bigger=None)
     currentVal=0
     Min_Val=0
     Max_Val=0
-    t=0
+    loop=0
 
     if Continue:
         while(True):
-            t+=1
-            currentVal=simulate(st,times,"avg",threads)
-            Continue_list.append(currentVal)
-            if bigger and currentVal>=wanted:
+            loop+=1
+            print(loop)
+            currentVal=simulate(st,times,"everything",threads)
+            Continue_list+=(currentVal[3])
+            if bigger and currentVal[2]>=wanted:
                 break
-            elif bigger==False and currentVal<=wanted:
+            elif bigger==False and currentVal[1]<=wanted:
                 break
             else:
                 pass
@@ -108,24 +119,33 @@ def simulate(st,times,Output,threads=None,Continue=None,wanted=None,bigger=None)
                     computers_list.remove(c)
     
     #Outputs
-    Min_Val=min(trials_results)
-    Max_Val=max(trials_results)
+    if Continue:
+        CMin_Val=min(Continue_list)
+        CMax_Val=max(Continue_list)
+        if Output=="avg":
+            Continue_avg= sum(Continue_list)/len(Continue_list)
+            return Continue_avg
+        elif Output=="B-W":
+            return CMin_Val,CMax_Val
+        elif Output=="all":
+            return Continue_list
+        elif Output== "everything":
+            Continue_avg= sum(Continue_list)/len(Continue_list)
+            return Continue_avg,CMin_Val,CMax_Val,loop
+    else:
+        Min_Val=min(trials_results)
+        Max_Val=max(trials_results)
+        if Output=="avg":
+            trials_sum=sum(trials_results)/len(trials_results)
+            return trials_sum
+        elif Output=="B-W":
 
-    if Output=="avg":
-        trials_sum=sum(trials_results)/len(trials_results)
-        return trials_sum
-    elif Output=="B-W":
-        return Min_Val,Max_Val
-    elif Output=="all":
-        return trials_results
-    elif Continue:
-        Min_Val=min(Continue_avg)
-        Max_Val=max(Continue_avg)
-        Continue_avg= sum(Continue_list)/len(Continue_list)
-        return currentVal, t
-    elif Output== "everything":
-        trials_sum=sum(trials_results)/len(trials_results)
-        return trials_sum,Min_Val,Max_Val
+            return Min_Val,Max_Val
+        elif Output=="all":
+            return trials_results
+        elif Output== "everything":
+            trials_sum=sum(trials_results)/len(trials_results)
+            return trials_sum,Min_Val,Max_Val,trials_results
 
 
 

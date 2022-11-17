@@ -6,13 +6,21 @@ import matplotlib.pyplot as plt
 
 def main():
     string="all work and no paly make jack a dull boy"
-    Number_of_times=1000
-    mode="everything"
+    Number_of_times=100000
+    mode="all"
     threads_n=10
     Continue_m=None
     wanted_n=None
     bigger_m=None
-    print(simulate(string,Number_of_times,mode,threads=threads_n,Continue=Continue_m,wanted=wanted_n,bigger=bigger_m))
+    tup=simulate(string,Number_of_times,mode,threads=threads_n,Continue=Continue_m,wanted=wanted_n,bigger=bigger_m)
+    tim=[]
+    tim2=[]
+    for x in tup:
+        if x not in tim2:
+            tim.append(tup.count(x))
+            tim2.append(x)
+        
+    plot((tim2,tim))
 
 
 class Computer(threading.Thread):
@@ -39,7 +47,7 @@ class Computer(threading.Thread):
 
 def guesser(st):
     tries=0
-    alph=['a', 'b', 'c', 'd', 'e', 'singleTry', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ',"'",',','.']
+    alph=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ',"'",',','.']
     stlist=list(st)
     counter=0
     s=''
@@ -60,7 +68,17 @@ def guesser(st):
         tries+=1
         #time.sleep(0.03)
     return tries
-def plot():
+def plot(datas):
+    xAxis=sorted(datas[0])
+    Yaxis=datas[1]
+    #get datas
+    #if mode=="everything":
+     #   pass
+    #elif mode
+    plt.bar(xAxis,Yaxis)
+    plt.show()
+
+
     return
 
 

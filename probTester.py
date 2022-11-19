@@ -6,20 +6,20 @@ import matplotlib.pyplot as plt
 
 def main():
     string="all work and no paly make jack a dull boy"
-    Number_of_times=100000
-    mode="all"
-    threads_n=10
+    Number_of_times=10000000
+    mode="everything"
+    threads_n=100
     Continue_m=None
     wanted_n=None
     bigger_m=None
     tup=simulate(string,Number_of_times,mode,threads=threads_n,Continue=Continue_m,wanted=wanted_n,bigger=bigger_m)
     tim=[]
     tim2=[]
-    for x in tup:
+    for x in tup[3]:
         if x not in tim2:
             tim.append(tup.count(x))
             tim2.append(x)
-        
+    print(tup[0]+", "+tup[1]+", "+tup[2])  
     plot((tim2,tim))
 
 

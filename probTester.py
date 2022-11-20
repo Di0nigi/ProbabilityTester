@@ -50,7 +50,10 @@ def guesser(st):
     alph=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ',"'",',','.']
     stlist=list(st)
     counter=0
+    counter_1=0
     s=''
+    singletry=0
+    singletry_list=[]
     while True:
         if counter==len(stlist):
             break
@@ -63,7 +66,7 @@ def guesser(st):
             counter+=1
             #print(s)
         else:
-            pass
+            singletry+=1
             #print(s+alph[i])
         tries+=1
         #time.sleep(0.03)

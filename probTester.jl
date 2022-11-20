@@ -1,26 +1,33 @@
 function guesser(st)
     tries=0
     alph=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ',"'",',','.']
+    l=length(alph)
+    #println(alph[6])
     stlist=split(st,"")
-    counter=0
+    #print(stlist)
+    counter=1
     s=""
     while true
-        if counter == length(stlist)
+        if counter == length(stlist)+1
             break
         end
 
-        i=rand(0,lenght(alph)-1)
+        i= trunc(Int,rand()*l-1)+1
+        char=string(alph[i])
+        char2=stlist[counter]
+        #println(char*" "*char2)
         
-        if islower(alph[i]) == islower(stlist[counter])
-            if isupper(stlist[counter])
-                s+=uppercase(alph[i])
-            else
-                s=alph[i]+s
-            end
+        if cmp(lowercase(char),lowercase(char2))== 0
+            #print(char*" "*char2)
+            #if isuppercase(char2)
+            #    s= s*uppercase(char)
+            #else
+            s=s*char
+            #end
             counter+=1
             println(s)
         else
-            println(s+alph[i])
+            println(s*char)
         end
         tries+=1
         sleep(0.03)

@@ -1,3 +1,13 @@
+function isupp(s)
+    S=only(s)
+    if Int(S)<=90 && Int(S)>=65
+        ret = true
+    else
+        ret= false
+    end
+    return ret
+end
+
 function guesser(st)
     tries=0
     alph=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ',"'",',','.']
@@ -15,26 +25,25 @@ function guesser(st)
         i= trunc(Int,rand()*l-1)+1
         char=string(alph[i])
         char2=stlist[counter]
-        #println(char*" "*char2)
         
         if cmp(lowercase(char),lowercase(char2))== 0
-            #print(char*" "*char2)
-            #if isuppercase(char2)
-            #    s= s*uppercase(char)
-            #else
+            
+            if isupp(char2)
+                s= s*uppercase(char)
+            else
             s=s*char
-            #end
+            end
             counter+=1
-            println(s)
+            #println(s)
         else
-            println(s*char)
+            #println(s*char)
         end
         tries+=1
-        sleep(0.03)
+        #sleep(0.03)
     end
     return tries
 end
     
 
-guesser("all work and no play make jack a dull boy")
-
+f=guesser("All work aNd no play make jack a dull boy")
+print(f)

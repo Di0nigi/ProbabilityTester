@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 def main():
     string="all work and no play make jack a dull boy"
-    Number_of_times=100000
+    Number_of_times=100
     mode="everything"
     threads_n=1
     Continue_m=None
@@ -81,7 +81,7 @@ def plot(datas):
      #   pass
     #elif mode
     plt.bar(xAxis,Yaxis)
-    #plt.show()
+    plt.show()
 
 
     return

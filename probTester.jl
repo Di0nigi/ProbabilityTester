@@ -1,8 +1,8 @@
-using PlotlyJS, CSV, DataFrames
+using Plots
 
 function main()
     string="all work and no play make jack a dull boy"
-    Number_of_times=100
+    Number_of_times=10
     mode="everything"
     Continue_m=false
     wanted_n=0
@@ -11,22 +11,25 @@ function main()
     tim=[]
     tim2=[]
     #print(tup[3])
-    for x in tup[3]
+    for x in tup[4]
         if !(x in tim2)
-            push!(tim,count(i->(i==x),tup[3]))
+            push!(tim,count(i->(i==x),tup[4]))
             push!(tim2,x)
         end
     end
-    #s= f"{tup[0]}, {tup[1]}, {tup[2]}"
-    #print(s)
-    #plot((tim2,tim))
-    #print(tup)
+    #println(10)
+    s= "$tup[1], $tup[2], $tup[3]"
+    print(s)
+    plt(tim2,tim)
 end
 
 
 function plt(list1,list2)
-    data_list=[]
-    plot(data_list,x=:year, y=:pop, kind="bar")
+    x=sort!(list1)
+    #println(x)
+    y=list2
+    #print(y)
+    bar(x,y)
 end
 
 function isupp(s)

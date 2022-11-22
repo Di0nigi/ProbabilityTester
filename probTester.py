@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 def main():
     string="all work and no play make jack a dull boy"
-    Number_of_times=100
+    Number_of_times=100000000
     mode="everything"
     threads_n=1
     Continue_m=None

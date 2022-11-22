@@ -2,7 +2,7 @@ using Plots
 
 function main()
     string="all work and no play make jack a dull boy"
-    Number_of_times=10
+    Number_of_times=100
     mode="everything"
     Continue_m=false
     wanted_n=0
@@ -120,9 +120,9 @@ function simulate(st,times,Output,Continue,wanted,bigger)
         if  cmp(Output,"avg")==0
             Continue_avg= sum(Continue_list)/length(Continue_list)
             return Continue_avg
-        elseif O cmp(Output,"B-W")==0
+        elseif  cmp(Output,"B-W")==0
             return CMin_Val,CMax_Val
-        elseif Output=="all"
+        elseif cmp(Output,"all")==0
             return Continue_list
         elseif cmp(Output, "everything")==0
             Continue_avg= sum(Continue_list)/length(Continue_list)
@@ -135,7 +135,6 @@ function simulate(st,times,Output,Continue,wanted,bigger)
             trials_sum=sum(trials_results)/length(trials_results)
             return trials_sum
         elseif   cmp(Output,"B-W")==0
-
             return Min_Val,Max_Val
         elseif cmp(Output,"all")==0
             return trials_results
@@ -147,6 +146,4 @@ function simulate(st,times,Output,Continue,wanted,bigger)
 end
     
 
-#f=simulate("All work aNd no play make jack a dull boy",10000,"avg",false,0,false)
-#print(f)
 main()

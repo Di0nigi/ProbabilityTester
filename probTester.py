@@ -5,21 +5,23 @@ import matplotlib.pyplot as plt
 
 
 def main():
-    string="all work and no paly make jack a dull boy"
-    Number_of_times=10000000
+    string="all work and no play make jack a dull boy"
+    Number_of_times=100000
     mode="everything"
-    threads_n=100
+    threads_n=1
     Continue_m=None
     wanted_n=None
     bigger_m=None
     tup=simulate(string,Number_of_times,mode,threads=threads_n,Continue=Continue_m,wanted=wanted_n,bigger=bigger_m)
     tim=[]
     tim2=[]
+    #print(tup[3])
     for x in tup[3]:
         if x not in tim2:
-            tim.append(tup.count(x))
+            tim.append(tup[3].count(x))
             tim2.append(x)
-    print(tup[0]+", "+tup[1]+", "+tup[2])  
+    s= f"{tup[0]}, {tup[1]}, {tup[2]}"
+    print(s)
     plot((tim2,tim))
 
 
@@ -79,14 +81,9 @@ def plot(datas):
      #   pass
     #elif mode
     plt.bar(xAxis,Yaxis)
-    plt.show()
+    #plt.show()
 
 
-    return
-
-
-
-def display():
     return
 
 def simulate(st,times,Output,threads=None,Continue=None,wanted=None,bigger=None):
